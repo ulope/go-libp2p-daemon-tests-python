@@ -9,7 +9,8 @@ FROM python:3.7
 
 COPY --from=gobuild /go/bin/p2pd /p2pd
 
-RUN pip install p2pclient click
+COPY requirements.txt /requirements.txt
+RUN pip install -r /requirements.txt
 
 COPY main.py /main.py
 COPY entrypoint.sh /entrypoint.sh
